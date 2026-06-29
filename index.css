@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy:    #0F2544;
+    --flame:   #E8571A;
+    --caprivi: #1D7A4F;
+    --amber:   #F4A820;
+    --kalahari:#F8F5EE;
+    --border:  #E0DAD0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--kalahari);
+    color: #1A1A1A;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-3 bg-flame text-white font-semibold rounded-lg
+           hover:bg-flame-dark active:scale-[0.98] transition-all duration-150 text-sm;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-5 py-3 border border-border text-navy font-semibold rounded-lg
+           hover:border-navy hover:bg-navy hover:text-white active:scale-[0.98] transition-all duration-150 text-sm;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-muted font-medium rounded-lg
+           hover:text-navy hover:bg-kalahari-dark transition-all duration-150 text-sm;
+  }
+
+  .card {
+    @apply bg-white border border-border rounded-xl p-6;
+  }
+
+  .section-label {
+    @apply text-xs font-mono font-semibold uppercase tracking-widest text-flame;
+  }
+
+  .risk-high   { @apply bg-red-100 text-red-800 border border-red-200; }
+  .risk-medium { @apply bg-amber-100 text-amber-800 border border-amber-200; }
+  .risk-low    { @apply bg-green-100 text-green-800 border border-green-200; }
+}
+
+/* Signature canvas */
+canvas.sig-pad {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #bbb; }
+
+/* Document preview print */
+@media print {
+  .no-print { display: none !important; }
+  .print-full { width: 100% !important; max-width: none !important; }
+}
